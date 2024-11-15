@@ -8,10 +8,10 @@ In order to obtain a combined dataset with data from OMNeT++ and SUMO, it is ess
 
 ## STEP 0: Ensuring SUMO and OMNeT++ cars equivalence
 
-Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each car modifying TraCIMobility in Veins. Concretely, we have added a couple of lines in the file named veins/modules/application/traci/TraCIDemo11p.cc introducing a code similar to these lines that permit the ids to be saved on file  scalar-0.sca.
+Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each car modifying VeinsInetMobility in Veins. Concretely, we have created a new scalar statistic named ```carNumSUMO```, and we have also added a couple of lines in the file named veins/modules/application/traci/TraCIDemo11p.cc introducing a code similar to these lines that permit the ids to be saved on file  scalar-0.sca.
 
-    EV << "My SUMO id = " << getExternalId() << " - My VEINS id = " << getParentModule()->getIndex() << endl;
-    
+       EV << "My SUMO id = " << getExternalId() << " - My VEINS id = " << getParentModule()->getIndex() << endl;
+
 Once obtained OMNeT simulation results, in order to Extract vehicle ids from OMNeT++, the scalar output file has to be filtered to get the corresponding id of vehicles in Veins and SUMO. We have used the following command to get the equivalence:
 
 ```$ grep -A2 'carNumSUMO:stats' scalar-0.sca | grep '[0-9]\+' -o | paste -d " "  - - - | awk '{print $1" "$3}' > carxxxx.txt ```
