@@ -26,7 +26,7 @@ These steps do not include the necessary configuration of the urban coverage are
 
 In order to obtain all possible signals (i.e. ```fdc_signals_xxxx.xml```) of vehicles from SUMO trajectories this instruction can be used on the command line:
 
-```$ sumo -c Alicante_8620.sumo.cfg --fcd-output.geo true --fcd-output.signals true --fcd-output ../fdc_signals_8620.xml --end 1800```
+       $ sumo -c Alicante_8620.sumo.cfg --fcd-output.geo true --fcd-output.signals true --fcd-output ../fdc_signals_8620.xml --end 1800
 
 ## STEP 2: Extract data from SUMO
 
