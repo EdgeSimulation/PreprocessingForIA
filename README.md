@@ -14,7 +14,7 @@ Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar
 
 Once obtained OMNeT simulation results, in order to Extract vehicle ids from OMNeT++, the scalar output file has to be filtered to get the corresponding id of vehicles in Veins and SUMO. We have used the following command to get the equivalence:
 
-```$ grep -A2 'carNumSUMO:stats' scalar-0.sca | grep '[0-9]\+' -o | paste -d " "  - - - | awk '{print $1" "$3}' > carxxxx.txt ```
+       $ grep -A2 'carNumSUMO:stats' scalar-0.sca | grep '[0-9]\+' -o | paste -d " "  - - - | awk '{print $1" "$3}' > carxxxx.txt
 
 Being ```xxxx``` the id of the simulation (that in our case refers to the total number of cars considered in the process).
 
