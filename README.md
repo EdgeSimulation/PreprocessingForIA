@@ -8,11 +8,11 @@ In order to obtain a combined dataset with data from OMNeT++ and SUMO, it is ess
 
 ## STEP 0: Ensuring SUMO and OMNeT++ cars equivalence
 
-Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each car modifying VeinsInetMobility in Veins. Concretely, we have created a new scalar statistic named ```carNumSUMO```, and we have also added a couple of lines in the file named veins/modules/application/traci/TraCIDemo11p.cc introducing a code similar to these lines that permit the ids to be saved on file  scalar-0.sca.
+Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each car modifying VeinsInetMobility in Veins. Concretely, we have created a new scalar statistic named ```carNumSUMO```, and we have also added a couple of lines in the file named ```veins/modules/application/traci/TraCIDemo11p.cc``` introducing a code similar to these lines that permit the ids to be saved on the scalar output file ```scalar-0.sca```.
 
        EV << "My SUMO id = " << getExternalId() << " - My VEINS id = " << getParentModule()->getIndex() << endl;
 
-Once obtained OMNeT simulation results, in order to Extract vehicle ids from OMNeT++, the scalar output file has to be filtered to get the corresponding id of vehicles in Veins and SUMO. We have used the following command to get the equivalence:
+Once obtained OMNeT++ simulation results, in order to extract vehicle ids from OMNeT++, the scalar output file has to be filtered to get the corresponding id of vehicles in Veins and SUMO. We have used the following command to get the equivalence:
 
        $ grep -A2 'carNumSUMO:stats' scalar-0.sca | grep '[0-9]\+' -o | paste -d " "  - - - | awk '{print $1" "$3}' > carxxxx.txt
 
@@ -31,15 +31,15 @@ In order to obtain all possible signals (i.e. ```fdc_signals_xxxx.xml```) of veh
 ## STEP 2: Extract data from SUMO
 
 Run ```dataset_AI_sumoID.ipynb``` notebook to obtain formatted files with all values extracted from SUMO. 
-Check the mentioned notebook as, apart from organising the information, there are defined two functions to obtain the coordinates of either the 7 past seconds (```x-1,y-1 .. x-7,y-7```) or the 7 future seconds (```x1,y1 .. x7,y7```) of each vehicle, that might be useful depending on the AI algorithm planned to be used. 
+Check the mentioned notebook as it has three functions defined, one to organise the information in table format, one to add the geographical coordinates of the 7 past seconds (```x-1,y-1 .. x-7,y-7```) and another to get the future 7 future second geo positioning  (```x1,y1 .. x7,y7```) of each vehicle, that might be useful depending on the AI algorithm planned to be used.  
 
 # Steps to process an OMNeT++ dataset for AI
 
 Considering that the OMNeT++ generated files per simulation are named  (```vector-0.vec```, ```scalar-0.sca```, ```vector-0.vci```), we proceed to adapt the vector dataset for AI following the next steps.
 
-## STEP 3: Get attributes from OMNET output vectors
+## STEP 3: Get attributes from OMNET++ output vectors
 
-Run ```dataset_AI_omnet.ipynb``` notebook to obtain the desired attributes from OMNeT+ vector file  ```vector-0.vec```. In our case, we are interested in obtaining values of  ```distance```, ```measuredSinrDl```, ```measuredSinrUl```, ```rcvdSinrDl```, ```averageCqiDl```, ```servingCell```, ```rlcDelayDl```, ```rlcPacketLossTotal, ``` ```rlcPduDelayDl```, ```rlcPduPacketLossDl```, ```rlcPduThroughputDl```, ```rlcThroughputDl```, ```receivedPacketFromLowerLayer```.
+Run ```dataset_AI_omnet.ipynb``` notebook to obtain the desired attributes from OMNeT++ vector file  ```vector-0.vec```. In our case, we are interested in obtaining values of  ```distance```, ```measuredSinrDl```, ```measuredSinrUl```, ```rcvdSinrDl```, ```averageCqiDl```, ```servingCell```, ```rlcDelayDl```, ```rlcPacketLossTotal, ``` ```rlcPduDelayDl```, ```rlcPduPacketLossDl```, ```rlcPduThroughputDl```, ```rlcThroughputDl```, ```receivedPacketFromLowerLayer```.
 
 ## STEP 4: Format OMNeT++ dataset as a matrix
 
