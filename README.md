@@ -6,9 +6,9 @@ OMNeT++ and SUMO datasets are obtained though simulation based on the workflow i
 
 In order to obtain a combined dataset with data from OMNeT++ and SUMO, it is essential to guarantee the equivalence of vehicle ids in SUMO and the linked objects in OMNeT++ as, by default, there might be some differences that lead to problems when combining both datasets. 
 
-## STEP 0: Ensuring SUMO and OMNeT++ cars equivalence
+## STEP 0: Ensuring SUMO and OMNeT++ vehicles equivalence
 
-Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each car modifying VeinsInetMobility in Veins. Concretely, we have created a new scalar statistic named ```carNumSUMO```, and we have also added a couple of lines in the file named ```veins/modules/application/traci/TraCIDemo11p.cc``` introducing a code similar to these lines that permit the ids to be saved on the scalar output file ```scalar-0.sca```.
+Vehicle ids need to be extracted from SUMO and from Veins in OMNeT++ as a scalar statistic for each vehicle modifying VeinsInetMobility in Veins. Concretely, we have created a new scalar statistic named ```carNumSUMO```, and we have also added a couple of lines in the file named ```veins/modules/application/traci/TraCIDemo11p.cc``` introducing a code similar to these lines that permit the ids to be saved on the scalar output file ```scalar-0.sca```.
 
        EV << "My SUMO id = " << getExternalId() << " - My VEINS id = " << getParentModule()->getIndex() << endl;
 
@@ -16,7 +16,7 @@ Once obtained OMNeT++ simulation results, in order to extract vehicle ids from O
 
        $ grep -A2 'carNumSUMO:stats' scalar-0.sca | grep '[0-9]\+' -o | paste -d " "  - - - | awk '{print $1" "$3}' > carxxxx.txt
 
-Being ```xxxx``` the id of the simulation (that in our case refers to the total number of cars considered in the process).
+Being ```xxxx``` the id of the simulation (that in our case refers to the total number of vehicles considered in the process).
 
 # Steps to process a SUMO dataset for AI
 
@@ -47,7 +47,7 @@ Once obtained the desired attributes, files ```xxxx_omnet_AI.csv``` have to be f
 
 # Steps to combine OMNeT++ and SUMO datasets
 
-In order to combine SUMO and OMNeT++ datasets we have to ensure the ids of the cars in SUMO and the linked objects in OMNeT++ are equivalent as, by default there might be some differences that lead to problems when combining both datasets. 
+In order to combine SUMO and OMNeT++ datasets we have to ensure the ids of the vehicles in SUMO and the linked objects in OMNeT++ are equivalent as, by default there might be some differences that lead to problems when combining both datasets. 
 
 ## STEP 5: Combine SUMO and OMNeT++ datasets
 
