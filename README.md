@@ -20,13 +20,13 @@ Being ```xxxx``` the id of the simulation (that in our case refers to the total 
 
 # Steps to process a SUMO dataset for AI
 
-These steps do not include the necessary configuration of the urban coverage area and routes generation but provide the instructions to extract all signals that can be obtained from SUMO configuration files (```Alicante_8620.sumo.cfg``` in our case) and routes files (i.e. ```Alicante_8620_routes-rou.xml```, ```Alicante_centro_ciudad.net.xml```). 
+These steps do not include the necessary configuration of the urban coverage area and routes generation but provide the instructions to extract all signals that can be obtained from SUMO configuration files (```Alicante_4928.sumo.cfg``` in our case) and routes files (i.e. ```Alicante_4928_routes-rou.xml```, ```Alicante_centro_ciudad.net.xml```). 
 
 ## STEP 1: Obtain all signals from SUMO
 
 In order to obtain all possible signals (i.e. ```fdc_signals_xxxx.xml```) of vehicles from SUMO trajectories this instruction can be used on the command line:
 
-       $ sumo -c Alicante_8620.sumo.cfg --fcd-output.geo true --fcd-output.signals true --fcd-output ../fdc_signals_8620.xml --end 1800
+       $ sumo -c Alicante_4928.sumo.cfg --fcd-output.geo true --fcd-output.signals true --fcd-output ../fdc_signals_4928.xml --end 1800
 
 ## STEP 2: Extract data from SUMO
 
