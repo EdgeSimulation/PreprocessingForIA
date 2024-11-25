@@ -43,7 +43,7 @@ Run ```dataset_AI_omnet.ipynb``` notebook to obtain the desired attributes from 
 
 ## STEP 4: Format OMNeT++ dataset as a matrix
 
-Once obtained the desired attributes, files ```xxxx_omnet_AI.csv``` have to be formatted as matrices named ```xxxx_omnet_AI_matrix.csv``` with notebook  ```OMNET.ipynb```.
+Once obtained the desired attributes, files ```xxxx_omnet_AI.csv``` have to be formatted as matrices named ```xxxx_omnet_AI_matrix.csv``` with notebook  ```generate_OMNeT_matrix.ipynb```.
 
 # Steps to combine OMNeT++ and SUMO datasets
 
