@@ -52,3 +52,11 @@ In order to combine SUMO and OMNeT++ datasets we have to ensure the ids of the v
 ## STEP 5: Combine SUMO and OMNeT++ datasets
 
 Notebook named ```merge_files_sumo_omnet_xxxx.ipynb``` combines SUMO and OMNeT++ datasets based on vehicle ids equivalence.  Entry files are  ```xxxx_sumo_AI.csv```, ```xxxx_omnet_AI_matrix.csv``` and ```carxxxx.txt ```.
+
+
+# Related works
+
+If you use PreprocessingForIA scripts for your research, please cite our work: 
+
+* Cristina Bernad, Aleksandra Dedinec, Katja Gilly, Sonja Filiposka, Anastas Mishev, Towards Smart 6G: Mobility Prediction for Dynamic Edge Services Migration, Expert Systems with Applications,
+2025, 129348, ISSN 0957-4174, https://doi.org/10.1016/j.eswa.2025.129348. (https://www.sciencedirect.com/science/article/pii/S095741742502963X)
